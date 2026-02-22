@@ -4,7 +4,7 @@ Clinical decision support for skin lesion triage using Google's medical foundati
 
 Combines **MedSigLIP** (vision classification) with **MedGemma** (clinical explanation) to classify 7 skin lesion types, estimate uncertainty, and generate natural language clinical assessments.
 
-[![Open Demo in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/kabirgrover/dermtriage/blob/master/notebooks/03_demo_pipeline.ipynb)
+[![Open Demo in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/kabirrgrover/dermtriage-public/blob/master/notebooks/03_demo_pipeline.ipynb)
 
 ---
 
@@ -75,7 +75,7 @@ See [docs/RESULTS.md](docs/RESULTS.md) for full per-class breakdowns.
 
 ### Run the demo (recommended)
 
-1. Open the [demo notebook](https://colab.research.google.com/github/kabirgrover/dermtriage/blob/master/notebooks/03_demo_pipeline.ipynb) in Colab
+1. Open the [demo notebook](https://colab.research.google.com/github/kabirrgrover/dermtriage-public/blob/master/notebooks/03_demo_pipeline.ipynb) in Colab
 2. Add your HuggingFace token as a Colab secret (`HF_TOKEN`)
 3. Upload the trained checkpoint (`best_model.pth`)
 4. Run all cells
@@ -83,7 +83,7 @@ See [docs/RESULTS.md](docs/RESULTS.md) for full per-class breakdowns.
 ### Local setup
 
 ```bash
-git clone https://github.com/kabirgrover/dermtriage.git
+git clone https://github.com/kabirrgrover/dermtriage-public.git
 cd dermtriage
 pip install -r requirements.txt
 ```
