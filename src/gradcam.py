@@ -45,11 +45,22 @@ class GradCAM:
     def generate(self, input_tensor, class_idx=None):
         """Generate Grad-CAM heatmap.
 
+        Bypasses the model's ``torch.no_grad()`` wrapper by calling
+        the vision encoder and classifier head directly so that
+        gradients flow through the encoder for the backward hooks.
+
         Returns:
             (heatmap, class_idx) where heatmap is a numpy array in [0, 1].
         """
         self.model.eval()
-        output = self.model(input_tensor)
+        # Call encoder + head directly (with gradients enabled)
+        input_tensor = input_tensor.requires_grad_(True)
+        outputs = self.model.vision_model(pixel_values=input_tensor)
+        if hasattr(outputs, "pooler_output") and outputs.pooler_output is not None:
+            features = outputs.pooler_output
+        else:
+            features = outputs.last_hidden_state.mean(dim=1)
+        output = self.model.classifier(features)
 
         if class_idx is None:
             class_idx = output.argmax(dim=1).item()
@@ -79,7 +90,7 @@ class GradCAM:
             mode="bilinear",
             align_corners=False,
         )
-        return cam.squeeze().cpu().numpy(), class_idx
+        return cam.squeeze().cpu().detach().numpy(), class_idx
 
     def generate_visualization(self, image, input_tensor, class_idx=None, alpha=0.5, colormap="jet"):
         """Generate Grad-CAM overlay on original image.
