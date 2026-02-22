@@ -74,11 +74,19 @@ class GradCAM:
         activations = self.activations
 
         weights = gradients.mean(dim=1, keepdim=True)
-        cam = (weights * activations).sum(dim=-1)
-        cam = cam[:, 1:]  # remove CLS token
+        cam = (weights * activations).sum(dim=-1)  # (1, num_tokens)
 
-        grid_size = int(np.sqrt(cam.shape[1]))
-        cam = cam.reshape(1, grid_size, grid_size)
+        # Remove CLS token if present, then reshape to 2D grid
+        num_tokens = cam.shape[1]
+        grid_size = int(np.sqrt(num_tokens))
+        if grid_size * grid_size == num_tokens:
+            cam = cam.reshape(1, grid_size, grid_size)
+        else:
+            cam = cam[:, 1:]
+            num_patches = cam.shape[1]
+            grid_size = int(np.sqrt(num_patches))
+            cam = cam[:, :grid_size * grid_size]
+            cam = cam.reshape(1, grid_size, grid_size)
         cam = F.relu(cam)
         cam = cam - cam.min()
         if cam.max() > 0:
