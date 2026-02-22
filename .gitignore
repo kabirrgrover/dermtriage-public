@@ -1,0 +1,47 @@
+# Model checkpoints
+*.pth
+*.pt
+*.ckpt
+*.bin
+checkpoints/
+
+# Data
+data/
+*.csv
+*.zip
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Environment
+.env
+.venv/
+venv/
+env/
+
+# Secrets
+*.json
+!package.json
+kaggle.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Results (optional local)
+results/
