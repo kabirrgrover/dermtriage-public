@@ -10,7 +10,7 @@ Combines **MedSigLIP** (vision classification) with **MedGemma** (clinical expla
 
 ## Why DermTriage?
 
-Melanoma kills over 7,000 Americans annually, yet early detection yields >95% survival. The bottleneck is access: most skin checks happen in primary care, where physicians use smartphones — not dermatoscopes — and may see fewer than a dozen melanomas in their career.
+Melanoma kills nearly 60,000 people worldwide each year (GLOBOCAN 2022), yet when caught early the five-year survival rate exceeds 99%. The bottleneck is access: most skin checks happen in primary care, where physicians use smartphones — not dermatoscopes — and may see fewer than a dozen melanomas in their career.
 
 DermTriage addresses this by:
 - **Bridging the domain gap** between dermoscopic training data and real-world smartphone images (+31.9% cross-domain accuracy via mixed training)
@@ -131,6 +131,7 @@ print(report)
 
 ```
 dermtriage/
+├── app.py                         # Gradio live demo (HF Spaces)
 ├── README.md
 ├── requirements.txt
 ├── .gitignore
@@ -148,6 +149,7 @@ dermtriage/
 │   ├── 02_train_mixed.ipynb       # Experiment 2: Mixed training
 │   └── 03_demo_pipeline.ipynb     # Demo: classify + GradCAM + MedGemma
 └── docs/
+    ├── KAGGLE_WRITEUP.md          # Competition submission writeup
     └── RESULTS.md                 # Detailed experiment results
 ```
 
