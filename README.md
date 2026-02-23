@@ -4,7 +4,7 @@
 
 Combines **MedSigLIP** (vision classification) with **MedGemma** (clinical explanation) to classify 7 skin lesion types, estimate uncertainty via MC-Dropout, visualize model attention with Grad-CAM, and generate natural language clinical assessments.
 
-[![Open Demo in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/kabirrgrover/dermtriage-public/blob/master/notebooks/03_demo_pipeline.ipynb)
+[![Open Demo in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/kabirrgrover/dermtriage-public/blob/master/notebooks/03_demo_pipeline.ipynb) [![Open in HF Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/Kabirgrover/dermtriage)
 
 ---
 
